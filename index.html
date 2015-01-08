@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	</head>	
+	
+	<body>
+		<form id="chat_form">
+			<input type="text" name="chat_input" id="chat_input">
+			<input type="submit" value="Submit">
+		</form>	
+	
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			var server = io.connect('http://localhost:8080');
+			server.on('connect', function(data){
+				$('#status').html('Connected to chattr');
+				nickname = prompt('What\'s your nickname');
+				server.emit('join', nickname);
+			});
+			server.on('messages', function(data){
+				{insertMessage(data)}
+			});
+			$('#chat_form').submit(function(e){
+				var message = $('#chat_input').val();
+				socket.emit('message', message);
+			});
+		</script>	
+	</body>	
+</html>

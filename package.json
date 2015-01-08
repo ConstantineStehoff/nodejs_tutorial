@@ -1,0 +1,11 @@
+{
+	"name":"nodejs_tutorial",
+	"version":"0.0.1",
+	"description": "Some stuff",
+	"author": "Konstantin Stekhov",
+	"dependencies":{
+		"express": "4.2.x",
+		"socket.io": "~1.2.1",
+		"redis": "~0.12.1"
+	}
+}
